@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Octopus on a Bicycle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage, #stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .ov { position: absolute; pointer-events: none; color: #fff; }
+  #prompt { left: 5.2vw; bottom: 8.5vh; font: 500 2.05vw/1.2 "SF Mono", Menlo, monospace; letter-spacing: 0.01em; text-shadow: 0 0.15vw 1.2vw rgba(0,0,0,.45); }
+  #prompt .caret-ps { color: #ffb36b; }
+  #prompt .strike { text-decoration: line-through; text-decoration-thickness: 0.18vw; text-decoration-color: #ff6a4d; opacity: .55; }
+  #prompt .new { color: #ffd08a; }
+  #prompt .caret { color: #ffb36b; } #prompt .caret.off { opacity: 0; }
+  #titles { left: 0; right: 0; top: 37%; text-align: center; }
+  #title { font: italic 400 6.3vw/1 "New York", "Didot", Georgia, serif; text-transform: none; letter-spacing: .04em; color: #fff8ec; text-shadow: 0 0.3vw 2.4vw rgba(60,20,0,.35); opacity: 0; }
+  #sub { margin-top: 2.2vh; font: 600 1.1vw/1.4 "SF Pro Text", "Helvetica Neue", sans-serif; letter-spacing: .5em; text-transform: uppercase; color: #ffe7c7; opacity: 0; }
+  #credit { position: absolute; left: 0; right: 0; bottom: 7vh; text-align: center; font: 500 0.95vw/1.5 "SF Pro Text", "Helvetica Neue", sans-serif; letter-spacing: .22em; color: rgba(255,240,220,.85); text-transform: uppercase; opacity: 0; }
+  #credit b { font-weight: 800; letter-spacing: .3em; color: #fff; }
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/jsm/"}}</script>
+</head>
+<body>
+<div id="stage"></div>
+<div class="ov" id="prompt"></div>
+<div class="ov" id="titles"><div id="title">Octopus on a Bicycle</div><div id="sub">8 arms · 2 wheels · 0 pelicans</div></div>
+<div class="ov" id="credit">every spoke, chain link and sucker is code &nbsp;·&nbsp; <b>VITON13</b></div>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

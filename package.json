@@ -1,0 +1,14 @@
+{
+  "name": "octopus-on-a-bicycle",
+  "private": true,
+  "type": "module",
+  "description": "Octopus on a Bicycle — a 34-second 3D short film written entirely in three.js code",
+  "scripts": {
+    "start": "npx serve .",
+    "sound": "node tools/sound.mjs",
+    "render": "node tools/render.mjs --name=octo --size=1920x1080 --fps=60 --sub=4 --sound=out/sound.wav"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.12.0"
+  }
+}

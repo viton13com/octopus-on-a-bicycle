@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#222;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/jsm/"}}</script></head><body>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { buildBike } from './js/bike.js';
+import { buildOctopus } from './js/octopus.js';
+const W = innerWidth, H = innerHeight;
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setSize(W, H); r.setPixelRatio(1); r.toneMapping = THREE.ACESFilmicToneMapping; r.shadowMap.enabled = true; document.body.appendChild(r.domElement);
+const s = new THREE.Scene(); s.background = new THREE.Color('#cfd8dc');
+s.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.04).texture;
+const sun = new THREE.DirectionalLight('#fff', 2.5); sun.position.set(2, 4, 3); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); s.add(sun);
+const fl = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), new THREE.MeshStandardMaterial({ color: '#999' })); fl.rotation.x = -Math.PI / 2; fl.receiveShadow = true; s.add(fl);
+const bike = buildBike(); s.add(bike.root); const octo = buildOctopus(bike); bike.root.add(octo.root);
+const cam = new THREE.PerspectiveCamera(30, W / H, 0.01, 100);
+window.view = (px, py, pz, tx, ty, tz, fov = 30, crank = 0.6, steer = 0) => { cam.fov = fov; cam.updateProjectionMatrix(); cam.position.set(px, py, pz); cam.lookAt(tx, ty, tz);
+  bike.update({ wheelR: crank * 2.44, wheelF: crank * 2.44, crank, chainS: crank * 0.089, steer });
+  octo.update(Object.assign({ t: 1.3, speed: 5, cupPos: new THREE.Vector3(0.48, 1.12, 0.3), look: cam.position.clone() }, window.OS || {}));
+  r.render(s, cam); };
+view(0.56, 0.6, 3.2, 0.56, 0.55, 0);
+window.ready = true;
+</script></body></html>
