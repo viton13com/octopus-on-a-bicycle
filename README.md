@@ -4,7 +4,7 @@
 
 A 34-second 3D short film where every spoke, chain link and sucker is code.
 
-[Live demo](https://viton13bussiness-collab.github.io/octopus-on-a-bicycle/)  ·  [viton13.com](https://viton13.com)
+[Live demo](https://viton13com.github.io/octopus-on-a-bicycle/)  ·  [viton13.com](https://viton13.com)
 
 <br>
 
